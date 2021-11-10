@@ -80,7 +80,7 @@ class ListaProduct{
             if(id == this.lista[arg].id){
                   this.lista[arg].nazwa = produkt.nazwa;
                   this.lista[arg].model = produkt.model;
-                  this.lista[arg].rok_produkcji = produkt.nazwa;
+                  this.lista[arg].rok_produkcji = produkt.rok_produkcji;
                   this.lista[arg].cena = produkt.cena;
                   this.lista[arg].zuzycieEnergii = produkt.zuzycieEnergii;
             }
@@ -88,7 +88,7 @@ class ListaProduct{
       }
 }
 const list = new ListaProduct();
-
+//testy zadanie 2
 list.wypiszWszystkieProdukty();
 list.dodajProduct(item);
 list.dodajProduct(item2);
@@ -96,4 +96,32 @@ list.wypiszWszystkieProdukty();
 list.zmieńProdukt(2,item3);
 list.wypiszWszystkieProdukty();
 
+//Zadanie 3
 
+class Magazyn extends ListaProduct{
+      constructor(list){
+            super();
+            this.listaPro = {};//key : idProduktu , value ilosć    
+      }
+
+      dodajProduct(produkt, ilosc){
+            for(const arg in this.lista){
+                  if(produkt.id == this.lista[arg].id){
+                        console.log("jest już takie ID");
+                  }
+              }      
+              this.lista.push(produkt);
+            
+
+            this.listaPro[produkt.id] = ilosc;
+      }
+
+}
+
+class Sklep extends ListaProduct{
+
+}
+
+let tmp = new Magazyn(list);
+
+tmp.dodajProduct(item, 10)
